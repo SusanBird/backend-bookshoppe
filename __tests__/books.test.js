@@ -10,9 +10,9 @@ describe('books routes', () => {
 
   it('should return a list of books with their title and year released', async () => {
     const res = await request(app).get('/books');
-    expect(res.body.length).toEqual(6);
-    const huckFinn = res.body.find((char) => char.title === 'Adventures of Huckleberry Finn');
-    expect(huckFinn).toHaveProperty('released', '1884');
+    expect(res.body.length).toEqual(4);
+    const huckFinn = res.body.find((book) => book.title === 'Adventures of Huckleberry Finn');
+    expect(huckFinn).toHaveProperty('released', 1884);
   });
 
   afterAll(() => {
