@@ -15,6 +15,14 @@ describe('author routes', () => {
     expect(markTwain).toHaveProperty('authname', 'Mark Twain');
   });
 
+  it('should return a single author with their info and books written', async () => {
+    const res = await request(app).get('/authors/1');
+    expect(res.body.authname).toEqual('Mark Twain');
+    // expect(res.body.dob).toEqual('1835-11-30');
+    expect(res.body.pob).toEqual('Florida, Missouri');
+    expect(res.body.books[0].title).toEqual('Adventures of Huckleberry Finn');
+  });
+
   afterAll(() => {
     pool.end();
   });
