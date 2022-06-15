@@ -26,11 +26,14 @@ describe('author routes', () => {
   it('POST /should add a new author', async () => {
     const res = await request(app)
       .post('/authors')
-      .send({ authname: 'Robin Dunbar', dob: '1954-12-04', pob: 'Liverpool, United Kingdom', books: [{ id: '5', title: 'Social Brain Hypothesis', released: 2007 }, { id: '6', title: 'How Religion Evolved, and Why it Persists', released: 2022 }] });
-    expect(res.body.authname).toBe('Robin Dunbar');
+      .send({ authname: 'Robin Dunbar', dob: '1954-12-04', pob: 'Liverpool, United Kingdom', bookIds: [1, 2] });
+    expect(res.body.authname).toEqual('Robin Dunbar');
   });
 
   afterAll(() => {
     pool.end();
   });
 });
+
+
+// { id: '5', title: 'Social Brain Hypothesis', released: 2007 }, { id: '6', title: 'How Religion Evolved, and Why it Persists', released: 2022 }
