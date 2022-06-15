@@ -23,6 +23,13 @@ describe('books routes', () => {
     expect(res.body.authors[0].authname).toEqual('Mark Twain');
   });
 
+  it('POST /should add a new book', async () => {
+    const res = await request(app)
+      .post('/books')
+      .send({ title: 'Social Brain Hypothesis', released: 2007, authors: [{ id: '7', authname: 'Robin Dunbar' }] });
+    expect(res.body.title).toEqual('Social Brain Hypothesis');
+  });
+
   afterAll(() => {
     pool.end();
   });

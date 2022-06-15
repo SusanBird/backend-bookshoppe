@@ -26,7 +26,7 @@ describe('author routes', () => {
   it('POST /should add a new author', async () => {
     const res = await request(app)
       .post('/authors')
-      .send({ authname: 'Robin Dunbar', dob: '1954-12-04', pob: 'Liverpool, United Kingdom', bookIds: [1, 2] });
+      .send({ authname: 'Robin Dunbar', dob: '1954-12-04', pob: 'Liverpool, United Kingdom', bookIds: [2, 3] });
     expect(res.body.authname).toEqual('Robin Dunbar');
   });
 
