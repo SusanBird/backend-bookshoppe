@@ -17,15 +17,16 @@ describe('books routes', () => {
   });
 
   it('should return a single book with its title, year released, author id and name', async () => {
-    const res = await request(app).get('/books');
-    expect(res.body.length).toEqual(4);
-    const huckFinn = res.body.find((book) => book.id === '1');
-    expect(huckFinn).toHaveProperty('title', 'Adventures of Huckleberry Finn');
-    expect(huckFinn).toHaveProperty('released', 1884);
-    expect(huckFinn).toHaveProperty('authors', []);
+    const res = await request(app).get('/books/1');
+    expect(res.body.title).toEqual('Adventures of Huckleberry Finn');
+    expect(res.body.released).toEqual(1884);
+    expect(res.body.authors[0].authname).toEqual('Mark Twain');
   });
 
   afterAll(() => {
     pool.end();
   });
 });
+
+
+
